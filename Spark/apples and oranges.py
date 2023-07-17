@@ -39,7 +39,7 @@ where fruit = 'apples'
 ).show()
 
 #Way 2 Pyspark:
-df.withColumn("diff",F.lead("sold_num",1).over(Window.partitionBy("sale_date").orderBy('sale_date'))).filter(" fruit = 'apples' ").select("sale_date","diff").show()
+df.withColumn("diff",F.col("sold_num") - F.lead("sold_num",1).over(Window.partitionBy("sale_date").orderBy('sale_date'))).filter(" fruit = 'apples' ").select("sale_date","diff").show()
 #close spark
 spark.sparkContext._gateway.close()
 spark.stop()
