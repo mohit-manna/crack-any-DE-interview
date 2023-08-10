@@ -6,7 +6,7 @@ import pyspark.sql.functions as F
 from pyspark.sql.window import Window
 spark = SparkSession.builder.master("local[1]").appName("SparkByExamples.com").getOrCreate()
 #close spark
-# https://www.codingninjas.com/studio/problems/biggest-single-number_2111955?utm_source=youtube&utm_medium=affiliate&utm_campaign=sqlproblemlist_shashank
+# https://www.codingninjas.com/studio/problems/biggest-single-number_2111955
 df=spark.read.csv("SampleData/biggest-single-number.csv",header=True)
 df.createOrReplaceTempView("my_numbers")
 spark.sql("""
