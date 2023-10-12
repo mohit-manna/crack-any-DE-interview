@@ -5,6 +5,7 @@ from pyspark.sql import SparkSession
 import pyspark.sql.functions as F
 from pyspark.sql.window import Window
 spark = SparkSession.builder.master("local[1]").appName("Manna").getOrCreate()
+print('PySpark Version :'+spark.version)
 df=spark.read.csv("SampleData/a1.csv",header=True)
 df1=spark.read.csv("SampleData/b1.csv",header=True)
 df.show()
@@ -18,5 +19,3 @@ print("right outer",df.join(df1,df.A1 == df1.B1,"rightouter").count())
 print("left anti",df.join(df1,df.A1 == df1.B1,"leftanti").count())
 print("left semi",df.join(df1,df.A1 == df1.B1,"leftsemi").count())
 #close spark
-spark.sparkContext._gateway.close()
-spark.stop()

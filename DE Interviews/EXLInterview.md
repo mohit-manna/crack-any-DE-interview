@@ -25,6 +25,7 @@ from pyspark.sql import SparkSession
 import pyspark.sql.functions as F
 from pyspark.sql.window import Window
 spark = SparkSession.builder.master("local[1]").appName("SparkByExamples.com").getOrCreate()
+print('PySpark Version :'+spark.version)
 #close spark
 df=spark.read.csv("SampleData/exl-employee.csv",inferSchema =True,header=True)
 df.createOrReplaceTempView("employee")
@@ -42,8 +43,7 @@ df.groupBy(F.col("dept")).agg(F.avg(F.col("salary"))).show() #can't be added in 
 df2=df.withColumn("avg_salary",F.avg('salary').over(Window.partitionBy(F.col('dept'))).alias('avg_salary'))
 df2.filter(F.col("avg_salary")>1000000).select("emp_id","emp_name","salary").show()
 # emp_id,emp_name,salary,dept,avg_salary
-spark.sparkContext._gateway.close()
-spark.stop()
+
 ```
 6. SQL Question 
 
@@ -57,6 +57,7 @@ from pyspark.sql import SparkSession
 import pyspark.sql.functions as F
 from pyspark.sql.window import Window
 spark = SparkSession.builder.master("local[1]").appName("SparkByExamples.com").getOrCreate()
+print('PySpark Version :'+spark.version)
 #close spark
 df=spark.read.csv("SampleData/exl-employee.csv",inferSchema =True,header=True)
 df.createOrReplaceTempView("employee")
@@ -80,8 +81,7 @@ select distinct a.emp_id,a.emp_name
 # Pyspark Way
 df2=df
 df.alias('a').join(df2.alias('b'),[df.emp_id == df2.emp_id,df.emp_name != df2.emp_name] ).select("a.emp_id","a.emp_name").distinct().show()
-spark.sparkContext._gateway.close()
-spark.stop()
+
 ```
 
 ## Second Round Interview Questions

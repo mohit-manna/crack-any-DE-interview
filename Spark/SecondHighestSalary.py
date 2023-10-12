@@ -5,6 +5,7 @@ from pyspark.sql import SparkSession
 import pyspark.sql.functions as F
 from pyspark.sql.window import Window
 spark = SparkSession.builder.master("local[1]").appName("SparkByExamples.com").getOrCreate()
+print('PySpark Version :'+spark.version)
 
 
 # Problem: https://leetcode.com/problems/second-highest-salary/
@@ -26,5 +27,3 @@ df=employee.withColumn("rn",F.dense_rank().over(Window.orderBy(F.desc("salary"))
 second_high_sal_df=df.filter(F.col("rn")==2).select(F.col("salary"))
 second_high_sal_df.agg(F.max(F.col("salary")).alias("SecondHighestSalary")).show()
 # close spark
-spark.sparkContext._gateway.close()
-spark.stop()

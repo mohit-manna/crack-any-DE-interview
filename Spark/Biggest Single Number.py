@@ -5,6 +5,7 @@ from pyspark.sql import SparkSession
 import pyspark.sql.functions as F
 from pyspark.sql.window import Window
 spark = SparkSession.builder.master("local[1]").appName("SparkByExamples.com").getOrCreate()
+print('PySpark Version :'+spark.version)
 #close spark
 # https://www.codingninjas.com/studio/problems/biggest-single-number_2111955
 df=spark.read.csv("SampleData/biggest-single-number.csv",header=True)
@@ -17,5 +18,3 @@ select num from my_numbers
           limit 1
           """).show()
 df.groupBy("num").count().filter("count == 1 ").orderBy("num", ascending=False).select("num").limit(1).show()
-spark.sparkContext._gateway.close()
-spark.stop()

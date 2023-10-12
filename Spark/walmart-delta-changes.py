@@ -5,6 +5,7 @@ from pyspark.sql import SparkSession
 import pyspark.sql.functions as F
 from pyspark.sql.window import Window
 spark = SparkSession.builder.master("local[1]").appName("Manna").getOrCreate()
+print('PySpark Version :'+spark.version)
 
 # Problem Statement: We have old data and New data. We need to comapre each row and 
 # then add one new column delta_value for each row which will have 
@@ -32,5 +33,3 @@ df.select(
     "delta_value"
         ).show()
 #close spark
-spark.sparkContext._gateway.close()
-spark.stop()

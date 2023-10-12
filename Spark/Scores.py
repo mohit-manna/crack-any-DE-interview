@@ -5,6 +5,7 @@ from pyspark.sql import SparkSession
 import pyspark.sql.functions as F
 from pyspark.sql.window import Window
 spark = SparkSession.builder.master("local[1]").appName("mohit-manna").getOrCreate()
+print('PySpark Version :'+spark.version)
 
 
 # Problem: https://www.codingninjas.com/studio/problems/running-total-for-different-genders_2188769
@@ -23,5 +24,3 @@ order by gender
 tdf=df.withColumn('total',F.sum('score_points').over(Window.partitionBy(F.col('gender')).orderBy(F.col('day'))))
 tdf.select('gender','day','total').show()
 # close spark
-spark.sparkContext._gateway.close()
-spark.stop()

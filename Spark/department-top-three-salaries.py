@@ -6,6 +6,7 @@ from pyspark.sql import SparkSession
 import pyspark.sql.functions as F
 from pyspark.sql.window import Window
 spark = SparkSession.builder.master("local[1]").appName("Manna").getOrCreate()
+print('PySpark Version :'+spark.version)
 dept=spark.read.csv("SampleData/department-top-three-salaries-dept.csv",header=True)
 emp=spark.read.csv("SampleData/department-top-three-salaries-employee.csv",header=True)
 dept.createOrReplaceTempView("department")
@@ -23,5 +24,3 @@ emp.withColumn('rnk',F.dense_rank().over(Window.partitionBy("departmentId").orde
 .join(dept,emp.departmentId == dept.id) \
 .select(dept.name.alias("department"),emp.name.alias("employee"),emp.salary).show()
 #close spark
-spark.sparkContext._gateway.close()
-spark.stop()

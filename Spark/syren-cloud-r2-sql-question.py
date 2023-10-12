@@ -5,6 +5,7 @@ from pyspark.sql import SparkSession
 import pyspark.sql.functions as F
 from pyspark.sql.window import Window
 spark = SparkSession.builder.master("local[1]").appName("Manna").getOrCreate()
+print('PySpark Version :'+spark.version)
 df=spark.read.csv("SampleData/syren-cloud-data.csv",header=True)
 #Problem Statement: data represents user, subscription start and end date. We need to find if subscription is matching or not with other.
 df.createOrReplaceTempView("subs")
@@ -32,6 +33,5 @@ select a.user,
   group by x.user   
 """).show()
 #close spark
-spark.sparkContext._gateway.close()
-spark.stop()
+
 

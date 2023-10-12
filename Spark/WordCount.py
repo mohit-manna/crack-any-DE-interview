@@ -5,6 +5,7 @@ from pyspark.sql import SparkSession
 import pyspark.sql.functions as F
 
 spark = SparkSession.builder.master("local[1]").appName("SparkByExamples.com").getOrCreate()
+print('PySpark Version :'+spark.version)
 
 # Way 1: Using DataFrame
 text=spark.read.text("SampleData/wordcount.txt")
@@ -22,5 +23,3 @@ word="fiction"
 word_count_df.filter(F.lower(F.col("word")).rlike(word)).agg(F.sum("count").alias(f"{word}_count")).show()
 
 #close spark
-spark.sparkContext._gateway.close()
-spark.stop()

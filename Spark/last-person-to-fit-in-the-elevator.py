@@ -5,6 +5,7 @@ from pyspark.sql import SparkSession
 import pyspark.sql.functions as F
 from pyspark.sql.window import Window
 spark = SparkSession.builder.master("local[1]").appName("Manna").getOrCreate()
+print('PySpark Version :'+spark.version)
 df=spark.read.csv("SampleData/last-person-to-fit-in-the-elevator.csv",header=True)
 df.createOrReplaceTempView("queue")
 # The maximum weight the elevator can hold is 1000.
@@ -32,5 +33,3 @@ df.alias("a").join(df.alias("b"),F.col("a.turn") >= F.col("b.turn"))\
     .limit(1) \
     .show()
 #close spark
-spark.sparkContext._gateway.close()
-spark.stop()

@@ -16,9 +16,9 @@ findspark.init()
 import pyspark
 from pyspark.sql import SparkSession
 spark = SparkSession.builder.master("local[1]").appName("SparkByExamples.com").getOrCreate()
+print('PySpark Version :'+spark.version)
 #close spark
-spark.sparkContext._gateway.close()
-spark.stop()
+
 ```
 We just need to install `findspark` in our environment in which we want to work. I recommend using virtualenv. 
 

@@ -5,6 +5,7 @@ from pyspark.sql import SparkSession
 import pyspark.sql.functions as F
 from pyspark.sql.window import Window
 spark = SparkSession.builder.master("local[*]").appName("Manna").getOrCreate()
+print('PySpark Version :'+spark.version)
 
 # https://leetcode.com/problems/managers-with-at-least-5-direct-reports
 
@@ -22,5 +23,3 @@ select name from Employee where id in (select id from x)
 mdf=df.groupBy("managerId").count().filter("count >= 5").select("managerId")
 df.join(mdf,df.id==mdf.managerId).select("name").show()
 #close spark
-spark.sparkContext._gateway.close()
-spark.stop()

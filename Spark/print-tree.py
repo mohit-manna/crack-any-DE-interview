@@ -4,6 +4,7 @@ import pyspark
 from pyspark.sql import SparkSession
 from pyspark.sql import functions as F
 spark = SparkSession.builder.master('local[*]').appName("manna").getOrCreate()
+print('PySpark Version :'+spark.version)
 
 df = spark.read.csv("SampleData/print-tree.csv",header = True)
 df.createOrReplaceTempView("nodes")
