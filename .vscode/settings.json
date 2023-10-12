@@ -1,0 +1,8 @@
+{
+    "python.autoComplete.extraPaths": [
+        "C:\\apps\\spark-3.0.0-bin-hadoop2.7\\python"
+    ],
+    "python.analysis.extraPaths": [
+        "C:\\apps\\spark-3.0.0-bin-hadoop2.7\\python"
+    ]
+}

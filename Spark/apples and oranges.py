@@ -7,6 +7,7 @@ from pyspark.sql import SparkSession
 import pyspark.sql.functions as F
 from pyspark.sql.window import Window
 spark = SparkSession.builder.master("local[1]").appName("Manna").getOrCreate()
+print('PySpark Version :'+spark.version)
 df=spark.read.csv("SampleData/apple-and-oranges.csv",header=True)
 df.show()
 df.createOrReplaceTempView("sales")
@@ -41,5 +42,5 @@ where fruit = 'apples'
 #Way 2 Pyspark:
 df.withColumn("diff",F.col("sold_num") - F.lead("sold_num",1).over(Window.partitionBy("sale_date").orderBy('sale_date'))).filter(" fruit = 'apples' ").select("sale_date","diff").show()
 #close spark
-spark.sparkContext._gateway.close()
-spark.stop()
+# spark.sparkContext._gateway.close()
+# spark.stop()
