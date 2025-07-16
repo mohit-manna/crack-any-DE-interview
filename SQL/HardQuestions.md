@@ -8,10 +8,22 @@
 Find the median salary for each company.
 
 **Approach:**  
-1. For each company, assign a row number to each employee based on their salary (using `ROW_NUMBER()`).
-2. Calculate the total number of employees in each company (using `COUNT()`).
-3. The median salary is the one where the row number is between `(total_count / 2)` and `(total_count / 2) + 1`.
-4. Filter the Salary between these min and max counts. 
+- For each company, assign a row number to each employee based on their salary (using `ROW_NUMBER()`).
+- Calculate the total number of employees in each company (using `COUNT()`).
+- The median salary is the one where the row number is between `(total_count / 2)` and `(total_count / 2) + 1`.
+- Filter the Salary between these min and max counts. 
 
 [See implementation in `median-salary.py`](../SQL/hard/median-salary.py)
 
+## 2. Find Cumulative Salary of an Employee
+[LeetCode Problem: Find Cumulative Salary of an Employee](https://leetcode.com/problems/find-cumulative-salary-of-an-employee/description/)
+
+**Problem:**
+Get the cumulative sum of an employee's salary over a period of 3 months but exclude the most recent month.
+The result should be displayed by 'Id' ascending, and then by 'Month' descending.
+
+**Approach:**  
+- row_number() to filter last month 
+- sum() over() to calculate cumulative salary
+
+[See implementation in `find-cumulative-salary-of-an-employee.py`](../SQL/hard/find-cumulative-salary-of-an-employee.py)
