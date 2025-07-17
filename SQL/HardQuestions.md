@@ -27,3 +27,17 @@ The result should be displayed by 'Id' ascending, and then by 'Month' descending
 - sum() over() to calculate cumulative salary
 
 [See implementation in `find-cumulative-salary-of-an-employee.py`](../SQL/hard/find-cumulative-salary-of-an-employee.py)
+
+## 3. Find Median Given Frequency of Numbers
+[LeetCode Problem: Find Median Given Frequency of Numbers](https://leetcode.com/problems/find-median-given-frequency-of-numbers/description/)
+
+**Problem:**
+Given a list of numbers and their frequencies, find the median.
+The numbers are 0, 0, 0, 0, 0, 0, 0, 1, 2, 2, 2, 3, so the median is (0 + 0) / 2 = 0
+
+**Approach:**
+- Take two datasets: one for total_freq/2 and total_freq/2 + 1.
+- Use a window function to calculate the cumulative frequency.
+- Find the rows where the cumulative frequency matches either of the t/2 or t/2 + 1 and do average of the numbers in those rows.
+
+[See implementation in `find-median-given-frequency-of-numbers.py`](../SQL/hard/find-median-given-frequency-of-numbers.py)
