@@ -45,8 +45,8 @@ def transform_with_pyspark(df):
 
 def test_transformations(spark):
     current_file = os.path.splitext(os.path.basename(__file__))[0]
-    input_file = f"SampleData/csv_files/{current_file}/input.csv"
-    output_file = f"SampleData/csv_files/{current_file}/output.csv"
+    input_file = f"SQL/hard/{current_file}/input.csv"
+    output_file = f"SQL/hard/{current_file}/output.csv"
 
     input_df = read_csv(spark, input_file)
     expected_output_df = read_csv(spark, output_file)
