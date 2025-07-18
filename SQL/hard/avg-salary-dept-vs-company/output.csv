@@ -1,0 +1,5 @@
+pay_month,department_id,comparison
+2017-03,1,higher
+2017-03,2,lower
+2017-02,1,same
+2017-02,2,same

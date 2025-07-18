@@ -41,3 +41,17 @@ The numbers are 0, 0, 0, 0, 0, 0, 0, 1, 2, 2, 2, 3, so the median is (0 + 0) / 2
 - Find the rows where the cumulative frequency matches either of the t/2 or t/2 + 1 and do average of the numbers in those rows.
 
 [See implementation in `find-median-given-frequency-of-numbers.py`](../SQL/hard/find-median-given-frequency-of-numbers/find-median-given-frequency-of-numbers.py)
+
+## 4. Average Salary by Department vs Company
+[LeetCode Problem: Average Salary by Department vs Company](https://leetcode.com/problems/average-salary-by-department-vs-company/description/)
+
+**Problem:**
+Given two tables `Salary` and `Employee`,
+Calculate the average salary for each department and compare it with the average salary of the company.
+
+**Approach:**
+- Calculate the average salary for each department using `GROUP BY`.
+- Calculate the overall average salary for the company.
+- Compare the department average with the company average using `CASE WHEN`.
+
+[See implementation in `avg-salary-dept-vs-company.py`](../SQL/hard/avg-salary-dept-vs-company/avg-salary-dept-vs-company.py)
