@@ -55,3 +55,16 @@ Calculate the average salary for each department and compare it with the average
 - Compare the department average with the company average using `CASE WHEN`.
 
 [See implementation in `avg-salary-dept-vs-company.py`](../SQL/hard/avg-salary-dept-vs-company/avg-salary-dept-vs-company.py)
+
+## 5. Workoholic Employees
+[NamasteSQL Problem: Workoholic Employees](https://www.namastesql.com/coding-problem/14-workaholics-employees?question_type=0&level_id=92CC513C7F7A5974)
+**Problem:**
+Find employees who satisfy at least one of the given criterions:
+ Worked for more than 8 hours a day for at least 3 days in a week. 
+ Worked for more than 10 hours a day for at least 2 days in a week
+**Approach:**
+- Find hours worked per day hours(logout-login), week of login
+- Group by employee_id and week, and find count of 8 hour shift and 10 hour shift per week
+- Then apply the criteria
+
+[See implementation in `workoholic-employees.py`](../SQL/hard/workoholic-employees/workoholic-employees.py)
