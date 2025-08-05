@@ -68,3 +68,14 @@ Find employees who satisfy at least one of the given criterions:
 - Then apply the criteria
 
 [See implementation in `workoholic-employees.py`](../SQL/hard/workoholic-employees/workoholic-employees.py)
+
+## 6. Malware Detection
+[NamasteSQL Problem: Malware Detection](https://www.namastesql.com/coding-problem/15-malware-detection?question_type=0&level_id=92CC513C7F7A5974)
+**Problem:**
+Find the number of times each malware was detected in the last 30 days.
+**Approach:**
+- Use a window function to calculate the count of each malware in the last 30 days.
+- Filter the results to include only those with a count greater than 0.
+
+
+[See implementation in `malware-detection.py`](../SQL/hard/malware-detection/malware-detection.py)
